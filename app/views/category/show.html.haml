@@ -1,0 +1,27 @@
+.container
+  .row
+    .well
+      %h1.text-center Category
+      .list-group
+        - @articles.each do |article|
+          .articles
+            %a.list-group-item.vertical-center.article-link{href: article_path(article)}
+              .media.col-md-3
+                %figure
+                  - if article.image_url.present?
+                    = image_tag(article.image_url, class: "img-rounded img-responsive img-fit" )
+                  - else
+                    = image_tag('http://via.placeholder.com/350x250', class: "media-object img-rounded img-responsive")
+              .col-md-6.text-truncate-container
+                %h4.list-group-item-heading
+                  = truncate(article.title, length: 50)
+                = share_mode_show(article.share_mode)
+                %p.list-group-item-text.text-truncate
+                  = truncate(article.short_description, length: 200)
+            .text-center.article-buttons
+              = link_to I18n.t('edit'), edit_article_path(article), class: "btn btn-default btn-block button"
+              = link_to I18n.t('delete'), article_path(article),method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-block button"
+            .article-id
+              = article.id
+          .clearfix
+      = will_paginate @articles

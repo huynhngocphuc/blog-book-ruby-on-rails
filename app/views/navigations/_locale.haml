@@ -1,0 +1,7 @@
+%a.dropdown-toggle.navbar-right{"data-toggle" => "dropdown", :href => "#"}
+  %i.fa-solid.fa-language
+%ul.dropdown-menu
+  %li{class: ('active' if current_locale?(:vn))}
+    = link_to 'VN', locale: "vn"
+  %li{class: ('active' if current_locale?(:en))}
+    = link_to 'EN', locale: "en"

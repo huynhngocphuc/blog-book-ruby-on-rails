@@ -1,0 +1,28 @@
+%h1 Search Results
+.container
+  .well
+    .row
+      - if @articles.any?
+        - @articles.each do |article|
+          - if both_public(article.category, article)
+            .col-md-3.mx-2
+              .feed-card
+                %a.feed-card_link{href: show_article_feed_path(article)}
+                  - if article.image_url.present?
+                    = image_tag(article.image_url, class: "feed-card_image")
+                  - else
+                    .feed-card_image
+                  .feed_title
+                    = truncate(article.title, length: 50)
+                  .heading.text-truncate
+                    = article.short_description
+                  .author
+                    %span.name.text-truncate
+                      %i.fa-solid.fa-user
+                      = article.customer.full_name
+                    = article.created_at
+                - if article.category_id?
+                  %a.label.label-primary.text-truncate.feed-card_label{href: show_category_feed_path(article.category)}
+                    = article.category.title
+      - else
+        %p No articles found.

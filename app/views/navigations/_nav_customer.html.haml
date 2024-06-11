@@ -1,0 +1,12 @@
+%a.navbar-brand{href: root_path}
+  %span 📚
+  = I18n.t('customer')
+%ul.nav.navbar-nav
+  %li.dropdown{class: ('active' if current_controller?('feed'))}
+    = render 'navigations/feed'
+  %li{class: ('active' if current_controller?('article'))}
+    %a{href: article_index_path} 
+      =I18n.t('my_article')
+  %li{class: ('active' if current_controller?('category'))}
+    %a{href: category_index_path}
+      =I18n.t('my_category')

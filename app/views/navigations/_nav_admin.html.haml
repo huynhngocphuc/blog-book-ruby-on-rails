@@ -1,0 +1,13 @@
+%a.navbar-brand{href: root_path} 📚 Admin
+%ul.nav.navbar-nav
+  %li.dropdown{class: ('active' if current_controller?('feed'))}
+    = render 'navigations/feed'
+  %li{class: ('active' if current_controller?('management_article'))}
+    %a{href: admin_management_article_index_path}
+      = I18n.t('navigations.management_article')
+  %li{class: ('active' if current_controller?('management_category'))}
+    %a{href: admin_management_category_index_path}
+      = I18n.t('navigations.management_category')
+  %li{class: ('active' if current_controller?('management_customer'))}
+    %a{href: admin_management_customer_index_path}
+      = I18n.t('navigations.management_customer')

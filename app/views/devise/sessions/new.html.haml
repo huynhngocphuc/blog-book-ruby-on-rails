@@ -1,0 +1,32 @@
+= stylesheet_link_tag 'sessions'
+.container
+  #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+    .panel.panel-info
+      .panel-heading
+        .panel-title
+          = I18n.t('devise.sign_in')
+      .panel-body
+        = form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: 'signinForm' }) do |f|
+
+          - flash.each do |name, msg|
+            -if name == 'alert'
+              .alert.alert-danger
+                = msg
+          .input-group
+            %span.input-group-addon
+              %i.fa-solid.fa-user
+            = f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: "Email"
+          .input-group
+            %span.input-group-addon
+              %i.fa-solid.fa-lock
+            = f.password_field :password, autocomplete: "current-password", class:"form-control", placeholder: I18n.t('devise.pass_word')
+          - if devise_mapping.rememberable?
+            .input-group
+              %label
+              = f.check_box :remember_me
+              = I18n.t('devise.remember')
+            .form-group
+              .col-sm-12.pl_0
+                = f.submit I18n.t('devise.sign_in'), class:"btn btn-success", id: "#btn-login"
+                -# %a#btn-fblogin.btn.btn-primary{:href => "#"} Login with Facebook
+            = render "devise/shared/links"

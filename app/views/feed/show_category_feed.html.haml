@@ -1,0 +1,32 @@
+.container
+  = render_breadcrumbs
+  .row
+    .well
+      %h1.text-center
+        = @category.title
+      .list-group
+        - @articles.each do |article|
+          - if both_public(article.category, article)
+            .articles
+              %a.list-group-item.vertical-center.article-link{href: show_article_feed_path(article)}
+                .media.col-md-3
+                  %figure
+                    - if article.image_url.present?
+                      = image_tag(article.image_url, class: "img-rounded img-responsive img-fit" )
+                    - else
+                      = image_tag('http://via.placeholder.com/350x250', class: "media-object img-rounded img-responsive")
+                .col-md-7.text-truncate-container
+                  %h4.list-group-item-heading
+                    = article.title
+                  %p.list-group-item-text.text-truncate
+                    = article.content
+                .col-md-2
+                  .author
+                    %span.name.text-truncate
+                      %i.fa-solid.fa-user
+                      = article.customer.first_name + " " + article.customer.last_name
+                    = article.created_at
+              .article-id
+                = article.id
+            .clearfix
+      = will_paginate @articles

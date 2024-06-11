@@ -1,0 +1,3 @@
+class ArticleImageUploader < Shrine
+
+end

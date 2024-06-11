@@ -1,0 +1,12 @@
+= form_for(customer, url:admin_management_customer_path(customer) ) do |f|
+  .row
+    .col-xs-6.col-sm-6.col-md-6
+      .form-group
+        = f.text_field :first_name, autofocus: true, class: "form-control input-sm", placeholder: "First Name"
+    .col-xs-6.col-sm-6.col-md-6
+      .form-group
+        = f.text_field :last_name, class: "form-control input-sm", placeholder: "Last Name"
+  .form-group
+    = f.email_field :email, autocomplete: "email", class: "form-control input-sm", placeholder: "Email Address"
+  = f.submit "Save"
+  

@@ -1,0 +1,8 @@
+ .container
+  %table.table.table-striped
+    %tbody
+      %tr
+        %td
+          = render 'form',article: @article, categories: @categories, path: article_index_path
+
+= javascript_include_tag 'preview_image'

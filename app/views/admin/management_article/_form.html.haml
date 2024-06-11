@@ -1,0 +1,59 @@
+= form_with(model: article, url: path, html: {class: 'well form-horizontal'}, local: true) do |form|
+  = render "devise/shared/error_messages", resource: article
+  .form-group
+    %label.col-md-2.control-label
+      = I18n.t('article.title')
+    .col-md-10.inputGroupContainer
+      .input-group
+        %span.input-group-addon
+          %i.fa-solid.fa-t
+        = form.text_field :title, class: 'form-control', placeholder: '140 characters maximum'
+  .form-group
+    %label.col-md-2.control-label
+      = I18n.t('article.short_description')
+    .col-md-10.inputGroupContainer
+      .input-group
+        %span.input-group-addon
+          %i.fa-solid.fa-heading
+        = form.text_field :short_description, class: 'form-control', placeholder: '300 characters maximum'
+  .form-group
+    %label.col-md-2.control-label
+      = I18n.t('article.content')
+    .col-md-10.inputGroupContainer
+      .input-group
+        %span.input-group-addon
+          %i.fa-solid.fa-pen-nib
+        = form.text_field :content, class: 'quill_container'
+  .form-group
+    %label.col-md-2.control-label
+      = I18n.t('article.category')
+    .col-md-10.inputGroupContainer
+      
+      .input-group
+        - options = options_for_select([['None', nil]] + categories.map { |c| [c.title, c.id] }, selected: article.category_id)
+        = form.select :category_id, options, {}, class: 'form-control'
+  .form-group
+    %label.col-md-2.control-label
+      = I18n.t('article.image')
+    .col-md-10.inputGroupContainer
+      .input-group
+        = form.hidden_field :image, value: article.cached_image_data
+        = form.file_field :image, onchange: 'previewImage(event)'# Thêm thuộc tính `direct: true` nếu bạn muốn tải lên trực tiếp
+        - if article.image_url.present?
+          = image_tag(article.image_url, class: "media-object img-rounded img-responsive img-fit", id: 'image_data' )
+          %br
+            %img#image_preview.img-responsive.img-fit
+          %br
+        - else
+          %br
+            %img#image_preview.img-responsive.img-fit
+          %br
+  .form-group
+    %label.col-md-2.control-label
+      = I18n.t('article.share_mode')
+    .col-md-10.inputGroupContainer
+      .input-group
+        = form.select :share_mode, ['public', 'private'], { selected: article.share_mode || 'public' }, class: 'form-control'
+  
+  %div
+    = form.submit I18n.t('article.save_article'), class: 'btn btn-new'

@@ -1,0 +1,6 @@
+%form.navbar-form.navbar-left{:action => search_path}
+  .input-group
+    %input.form-control{:name => "search_query", :placeholder => I18n.t("navigations.search"), :type => "text"}
+    .input-group-btn
+      %button.btn.btn-default{:type => "submit"}
+        %i.fa-solid.fa-magnifying-glass

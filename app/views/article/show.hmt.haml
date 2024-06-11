@@ -1,0 +1,26 @@
+.container
+  .panel.panel-default
+    .panel-heading
+      .row
+        .col-md-9
+          %a{:href => "#"}
+            = current_customer.full_name
+            %br
+          = share_mode_show(@article.share_mode)
+        .col-md-3.text-center
+          = link_to I18n.t('edit'), edit_article_path(@article), class: "btn btn-default"
+          = link_to I18n.t('delete'), article_path(@article),method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
+    .panel-body
+      - if @article.image_url.present?
+        = image_tag(@article.image_url, class: "media-object img-responsive img-article" )
+      - else
+        = image_tag('http://via.placeholder.com/350x250', class: "img-responsive img-article")
+      .row
+        .col-md-12
+          %h2.text-uppercase
+            = @article.title
+          %h5.text-monospace
+            = @article.short_description
+          %p
+            = raw @article.content
+          .clearfix

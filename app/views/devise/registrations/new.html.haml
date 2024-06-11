@@ -1,0 +1,33 @@
+= stylesheet_link_tag 'signup'
+.container
+  .row.centered-form
+    .col-xs-12.col-sm-8.col-md-4.col-sm-offset-2.col-md-offset-4
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title 
+            = I18n.t('navigations.sign_up')
+        .panel-body
+          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            = render "devise/shared/error_messages", resource: resource
+            .row
+              .col-xs-6.col-sm-6.col-md-6
+                .form-group
+                  = f.text_field :first_name, autofocus: true, class: "form-control input-sm", placeholder: I18n.t('devise.first_name')
+              .col-xs-6.col-sm-6.col-md-6
+                .form-group
+                  = f.text_field :last_name, class: "form-control input-sm", placeholder: I18n.t('devise.last_name')
+            .form-group
+              = f.email_field :email, autocomplete: "email", class: "form-control input-sm", placeholder: I18n.t('devise.email_address')
+            .row
+              .col-xs-6.col-sm-6.col-md-6
+                .form-group
+                  = f.password_field :password, autocomplete: "new-password", class: "form-control input-sm", placeholder: I18n.t('devise.pass_word')
+                  - if @minimum_password_length
+                    %em
+                      =t('characters_minimum',minimun: @minimum_password_length)
+                  %br/
+              .col-xs-6.col-sm-6.col-md-6
+                .form-group
+                  = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control input-sm", placeholder: I18n.t('devise.confirm_pass_word')
+            = f.submit I18n.t('navigations.sign_up')
+          = render "devise/shared/links"

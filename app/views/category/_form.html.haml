@@ -1,0 +1,29 @@
+= form_with(model: category, url: path, html: {class: 'well form-horizontal'}, local: true) do |form|
+  = render "devise/shared/error_messages", resource: category
+  .form-group
+    %label.col-md-2.control-label
+      = I18n.t('category.title')
+    .col-md-10.inputGroupContainer
+      .input-group
+        %span.input-group-addon
+          %i.fa-solid.fa-t
+        = form.text_field :title, class: 'form-control', placeholder: I18n.t('characters_maximum', maximun: 140)
+  .form-group
+    %label.col-md-2.control-label
+      = I18n.t('category.content')
+    .col-md-10.inputGroupContainer
+      .input-group
+        %span.input-group-addon
+          %i.fa-solid.fa-pen-nib
+        = form.text_area :content, class: 'form-control', placeholder: I18n.t('characters_maximum', maximun: 300)
+  .form-group
+    %label.col-md-2.control-label
+      = I18n.t('category.share_mode')
+    .col-md-10.inputGroupContainer
+      .input-group
+        = form.select :share_mode, ['public', 'private'], { selected: category.share_mode || 'public' }, class: 'form-control'
+  %div
+    = form.submit I18n.t('category.save_category'), class: 'btn btn-new'
+    - if action_name == 'edit'
+      = link_to category_path(category),method: :delete, class: "btn btn-delete", data: { confirm: "Are you sure?" } do
+        %i.fa-solid.fa-trash

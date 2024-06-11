@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Project
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'styles'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %link{:crossorigin => "anonymous", :href => "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css", :integrity => "sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==", :referrerpolicy => "no-referrer", :rel => "stylesheet"}/
+
+  %body
+    %header
+      = render "navigations/nav"
+      - if flash[:notice].present?
+        #toast
+          .toast.toast--success
+            .toast__icon
+              %i.fa-solid.fa-circle-check
+            .toast__body
+              %h3.toast__title 
+                = I18n.t('success')
+              %p.toast__msg
+                = flash[:notice]
+    = yield

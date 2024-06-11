@@ -1,0 +1,36 @@
+vn:
+  errors:
+    # The default format to use in full error messages.
+    format: "%{attribute} %{message}"
+
+    # The values :model, :attribute and :value are always available for interpolation
+    # The value :count is available when applicable. Can be used for pluralization.
+    messages:
+      model_invalid: "Xác thực không thành công: %{errors}"
+      inclusion: "không được bao gồm trong danh sách"
+      exclusion: "được bảo lưu"
+      invalid: "không hợp lệ"
+      confirmation: "không khớp với %{attribute}"
+      accepted: "must be accepted"
+      empty: "không thể để trống"
+      blank: "không thể để trống"
+      present: "phải để trống"
+      too_long:
+        one: "quá dài (tối đa là 1 ký tự)"
+        other: "quá dài (tối đa là %{count} ký tự)"
+      too_short:
+        one: "quá ngắn (tối thiểu 1 ký tự)"
+        other: "quá ngắn (tối thiểu là %{count} ký tự)"
+      wrong_length:
+        one: "độ dài sai (phải là 1 ký tự)"
+        other: "is the wrong length (should be %{count} characters)"
+      not_a_number: "không phải là số"
+      not_an_integer: "phải là số nguyên"
+      greater_than: "must be greater than %{count}"
+      greater_than_or_equal_to: "phải lớn hơn hoặc bằng %{count}"
+      equal_to: "phải bằng %{count}"
+      less_than: "phải nhỏ hơn %{count}"
+      less_than_or_equal_to: "phải nhỏ hơn hoặc bằng %{count}"
+      other_than: "phải khác %{count}"
+      odd: "phải là số lẻ"
+      even: "phải chẵn"

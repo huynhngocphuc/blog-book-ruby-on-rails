@@ -1,0 +1,26 @@
+.container
+  = render_breadcrumbs
+  .row
+    .well
+      %h1.text-center Category
+      .cards_category
+        - @categories.each do |category|
+          - unless category.private_mode?
+            .col-md-3.col-xs-5
+              .card_content
+                %a.card-category_link{href: show_category_feed_path(category)}
+                %h4.card_heading.text-truncate-container
+                  = category.title
+                .card_body.text-truncate
+                  %p
+                    = category.content
+                .author.card_name-customer.text-truncate
+                  %span.name
+                    %i.fa-solid.fa-user
+                    = category.customer.full_name
+                  = category.created_at
+                .card-category_tag-share-mode
+                  .label.label-primary
+                    = @categories_with_article_count[category.id] || 0
+                    %i.fa-solid.fa-newspaper
+      = will_paginate @categories

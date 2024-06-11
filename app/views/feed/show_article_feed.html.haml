@@ -1,0 +1,23 @@
+.container
+  = render_breadcrumbs
+  .panel.panel-default
+    .panel-heading
+      .row
+        .col-md-9
+          %a{:href => "#"}
+            %i.fa-solid.fa-user
+            = @article.customer.full_name
+    .panel-body
+      - if @article.image_url.present?
+        = image_tag(@article.image_url, class: "media-object img-responsive img-article" )
+      - else
+        = image_tag('http://via.placeholder.com/350x250', class: "img-responsive img-article")
+      .row
+        .col-md-12
+          %h2.text-uppercase
+            = @article.title
+          %h5.text-monospace
+            = @article.short_description
+          %p
+            = raw @article.content
+          .clearfix

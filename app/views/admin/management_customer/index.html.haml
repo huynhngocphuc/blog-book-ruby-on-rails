@@ -1,0 +1,50 @@
+.container
+  .row
+    .well
+      %h1.text-center
+        = I18n.t('navigations.management_customer')
+      %table.table.table-bordered
+        %thead
+          %tr
+            %th
+              = I18n.t('devise.first_name')
+            %th
+              = I18n.t('devise.last_name')
+            %th
+              = I18n.t('devise.email_address')
+            %th Active
+            %th
+              = I18n.t('edit') + '/' + I18n.t('delete')
+        %tbody
+          - @customers.each do |customer|
+            %tr
+              %td
+                = customer.first_name
+              %td 
+                = customer.last_name
+              %td
+                = customer.email
+              %td
+                = link_to toggle_active_admin_management_customer_path(customer), method: :patch, class:'switch' do
+                  = check_box_tag 'activated[]',customer.id, customer.active
+                  %span.slider
+              %td
+                .row
+                  .col-xs-6
+                    %a.open-modal-link{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", data: {id: customer.id, path: show_modal_admin_management_customer_path(customer)}}
+                      %i.fa-solid.fa-user-pen
+                  .col-xs-6
+                    = link_to admin_management_customer_path(customer), method: :delete, data: { confirm: "Are you sure?" } do
+                      %i.fa-solid.fa-user-minus
+      = will_paginate @customers
+
+#myModal.modal.fade{:role => "dialog"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title Edit customer
+      .modal-body
+        #modal-content
+= javascript_include_tag 'modal'

@@ -1,0 +1,26 @@
+%nav.navbar.navbar-inverse
+  .container-fluid
+    .navbar-header
+    - if customer_signed_in?
+      = render display_role(current_customer.role_id)
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to current_customer.last_name, edit_customer_registration_path
+        %li
+          = link_to I18n.t('navigations.log_out'), destroy_customer_session_path, method: :delete
+        %li.dropdown
+          = render 'navigations/locale'
+      = render 'search/search_article'
+    - else
+      %a.navbar-brand{href: root_path} 📚 BlogBook
+      %ul.nav.navbar-nav
+        %li.dropdown{class: ('active' if current_controller?('feed'))}
+          = render 'navigations/feed'
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to I18n.t('navigations.sign_in'), new_customer_session_path
+        %li
+          = link_to I18n.t('navigations.sign_up'), new_customer_registration_path
+        %li.dropdown
+          = render 'navigations/locale'
+      = render 'search/search_article'

@@ -1,0 +1,74 @@
+// Place all the styles related to the Feed controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.feed-card {
+  width: 100%;
+  height: 400px;
+  margin: 10px auto;
+  background: white;
+  padding: 0.4em;
+  position: relative;
+  border-radius: 6px;
+
+  .feed-card_link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 10%;
+  }
+  .feed-card_link:hover {
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+.feed-card_image {
+  background-color: rgb(236, 236, 236);
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 6px 6px 0 0;
+}
+
+.feed-card_image:hover {
+  transform: scale(0.98);
+}
+
+.feed_title {
+  text-transform: uppercase;
+  font-size: 0.7em;
+  font-weight: 600;
+  color: rgb(63, 121, 230);
+  padding: 10px 7px 0;
+}
+
+.heading {
+  font-weight: 600;
+  color: rgb(88, 87, 87);
+  padding: 7px 7px 0 7px;
+}
+
+.author {
+  color: gray;
+  font-weight: 400;
+  font-size: 11px;
+  padding-top: 10px;
+  margin: 0 2%;
+}
+
+.name {
+  font-weight: 600;
+  width: 50%;
+}
+
+.name:hover {
+  cursor: pointer;
+}
+
+.feed-card_label {
+  position: absolute;
+  max-width: 50%;
+  top: 92%;
+  left: 10px;
+}

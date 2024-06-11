@@ -1,0 +1,8 @@
+%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+  = I18n.t('navigations.feeds')
+  %span.caret
+%ul.dropdown-menu
+  %li
+    = link_to I18n.t('navigations.article'), index_articles_feed_path
+  %li
+    = link_to I18n.t('navigations.category'), index_categories_feed_path

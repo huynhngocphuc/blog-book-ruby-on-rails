@@ -1,0 +1,7 @@
+%h1 Article#edit
+.container
+  %table.table.table-striped
+    %tbody
+      %tr
+        %td
+          = render 'form', article: @article, categories: @categories, path: admin_management_article_path

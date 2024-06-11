@@ -1,0 +1,72 @@
+// Place all the styles related to the category controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.cards_category {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px 1px;
+
+  .card_content {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 150px;
+    background-color: #efe1d1;
+    border-radius: 10px;
+    border: solid #000 1px;
+    color: #331d2c;
+    cursor: pointer;
+    transition: 400ms;
+    .card_heading {
+      width: 70%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  .card_content:hover {
+    transform: scale(1.1, 1.1);
+  }
+  .card-category_link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .card_name-customer {
+    position: absolute;
+    left: 2%;
+    bottom: 2%;
+  }
+  .card-caterory_edit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 50% 50% 50% 0% / 50% 50% 50% 10%;
+  }
+  .card-category_tag-share-mode {
+    position: absolute;
+    top: 0;
+    left: 5px;
+  }
+  .card-category_tag-count-article {
+    position: absolute;
+    top: 0;
+    right: 2%;
+  }
+  .card-category_author {
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+  }
+}
+
+.cards_category:hover .card_content:not(:hover) {
+  transform: scale(0.9, 0.9);
+}

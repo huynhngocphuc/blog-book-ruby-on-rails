@@ -1,0 +1,91 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  navigations:
+    sign_in: "Sign In"
+    sign_up: "Sign Up"
+    log_out: "Logout"
+    article: "Article"
+    category: "Category"
+    feeds: "Feeds"
+    search: "Search"
+    management_article: "Management Article"
+    management_category: "Management Category"
+    management_customer: "Management Customer"
+  customer: "Customer"
+  my_article: "My Article"
+  my_category: "My Category"
+  characters_minimum: "%{minimun} characters minimum"
+  characters_maximum: "%{maximun} characters minimum"
+  edit: "Edit"
+  delete: "Delete"
+  success: "Success"
+  save: "Save"
+  devise:
+    sign_in: "Sign In"
+    sign_up: "Please sign up"
+    first_name: "First name"
+    last_name: "Last name"
+    email_address: "Email Address"
+    pass_word: "Password"
+    confirm_pass_word: "Confirm Password"
+    current_pass_word: "Current password"
+    leave_blank: "(leave blank if you don't want to change it)"
+    forgot_pass: "Forgot your password?"
+    new_confirmtion: "Didn't receive confirmation instructions?"
+    new_unlock: "Didn't receive unlock instructions?"
+    remember: "Remeber me"
+  article:
+    new_article: "New Article"
+    title: "Title"
+    short_description: "Short description"
+    content: "Content"
+    category: "Category"
+    image: "Image"
+    share_mode: "Share mode"
+    save_article: "Share article"
+  category:
+    new_category: "New category"
+    title: "Title"
+    content: "Content"
+    share_mode: "Share mode"
+    save_category: "Save category"
+  notice:
+    create_success: "Object was successfully created"
+    update_success: "Object was successfully updated"
+    error: "Something went wrong"
+    delete_success: "Object was successfully deleted."
+    toggled_success: "Customer's active status has been toggled."
+  mailer:
+    inactive: "You have violated the application policy. Your account has been locked."
+    delete: "Account has been deleted"

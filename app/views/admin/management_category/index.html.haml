@@ -1,0 +1,27 @@
+.container
+  .row
+    .well
+      %h1.text-center
+        = I18n.t('navigations.management_category')
+      .cards_category
+        - @categories.each do |category|
+          .col-md-3.col-xs-5
+            .card_content
+              %a.card-category_link{:href => admin_management_category_path(category)}
+              %h4.card_heading.text-truncate-container
+                = category.title
+              .card_body.text-truncate
+                %p
+                  = category.content
+              .author.card-category_author
+                %span.name
+                  %i.fa-solid.fa-user
+                  = category.customer.full_name
+              .card-category_tag-share-mode
+                = share_mode_show(category.share_mode)
+              .card-category_tag-count-article
+                = @categories_with_article_count[category.id] || 0
+                %i.fa-solid.fa-newspaper
+              = link_to I18n.t('edit'), edit_admin_management_category_path(category), class: "btn btn-default card-caterory_edit"
+            
+      = will_paginate @categories

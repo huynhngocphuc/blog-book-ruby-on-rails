@@ -1,0 +1,53 @@
+version: '2'
+services:
+  activemq:
+   image: 'rmohr/activemq:5.13.3'
+   ports:
+     - '8161:8161'
+     - '61613:61613'
+
+  opensearch:
+   image: 'opensearchproject/opensearch:2.5.0'
+   environment:
+     discovery.type: 'single-node'
+     OPENSEARCH_JAVA_OPTS: '-Xms512m -Xmx512m'
+     plugins.security.disabled: 'true'
+   ports:
+     - '9200:9200'
+     - '9600:9600'
+
+  memcached:
+   image: 'memcached:1.5-alpine'
+   ports:
+     - '11211:11211'
+
+  db:
+    image: mysql:8.0
+    container_name: blogbook
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456789
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  elasticsearch:
+    image: elasticsearch:7.17.10
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+
+  redis:
+   build: 'redis'
+   image: 'redis:7.0.0'
+   ports:
+     - '6379:6379'
+
+  node:
+    image: 'node:latest'
+    ports:
+      - '3000:3000'
+volumes:
+  dbdata:
